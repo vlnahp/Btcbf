@@ -11,7 +11,7 @@ It is fast because the number of loops is multiplied by the number of addresses 
 
   The "address.txt" file containing a list of public addresses.
   
-  $ PIP INSTALL -R REQUIREMENTS.TXT
+  $ pip install -r requirements.txt
 
 
 **Usage**
