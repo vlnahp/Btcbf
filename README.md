@@ -7,7 +7,7 @@ It is fast because the number of loops is multiplied by the number of addresses 
 
 
 
-**requirements**
+**Requirements**
 
   The "address.txt" file containing a list of public addresses.(Add as many as positive balance addresses possible to this file; this increases your chance of success)
   
@@ -20,9 +20,13 @@ It is fast because the number of loops is multiplied by the number of addresses 
 If any key found; a text file named "foundkey.txt" containing the found private key and public address is saved.
 
 
-**donation**
+**Donation**
 
 Make my btc address a good option to be in the list![image](https://user-images.githubusercontent.com/87664667/126873155-0f4255de-d2cd-47a5-9449-2554167e5a05.png)
 
 
 BTC: 19NZzAHSYoA448zjKapY2kn6BbyTGDY9Sj
+
+
+**Release**
+Released first version 0.1 executable
