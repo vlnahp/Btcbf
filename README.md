@@ -9,7 +9,7 @@ It is fast because the number of loops is multiplied by the number of addresses 
 
 **requirements**
 
-  The "address.txt" file containing a list of public addresses.
+  The "address.txt" file containing a list of public addresses.(Add as many as positive balance addresses possible to this file; this increases your chance of success)
   
   $ pip install -r requirements.txt
 
