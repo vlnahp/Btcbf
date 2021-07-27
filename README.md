@@ -1,4 +1,5 @@
 # Btcbf
+
 **Description**
 
 A fast and efficient bitcoin private key brute force written in python. The method is based on generation of random private keys and their corresponding public address; then searching each through a list of addresses with positive balance.
@@ -18,6 +19,7 @@ By uncommenting the two print() marked in the code the generated addresses and t
 
 
 **Usage**
+
   $ python Btcbf.py
   
 If any key found; a text file named "foundkey.txt" containing the found private key and public address is saved.
@@ -32,4 +34,5 @@ BTC: 19NZzAHSYoA448zjKapY2kn6BbyTGDY9Sj
 
 
 **Release**
+
 Released first version 0.1 executable
