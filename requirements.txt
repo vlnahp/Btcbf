@@ -1,3 +1,2 @@
-bitcoin
-base58
+bit
 tqdm
