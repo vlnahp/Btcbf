@@ -4,7 +4,7 @@ import mmap
 from tqdm import tqdm
 from sys import stdout
 from multiprocessing import Pool, cpu_count
-
+from time import sleep
 def generate_private_key():
     private_key = ECPrivateKey()
     return private_key
@@ -46,12 +46,14 @@ def num_of_cores():
             return int(cores)
         if int(cores)<=0 :
             print("Hey you can't use negative number of cpu cores!!")
+            sleep(8)
             exit()
         if int(cores) > available_cores:
             print("Haha, you only have "+str(available_cores)+" cores. So we use "+str(available_cores)+" cores!!")
             return int(available_cores)
     else:
         print("Wrong input!")
+        sleep(5)
         exit()
 
 def multiprocessing():
