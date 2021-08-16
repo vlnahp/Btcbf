@@ -44,7 +44,7 @@ def num_of_cores():
     if cores.isdigit():
         if 0 < int(cores) <= available_cores:
             return int(cores)
-        if int(cores)<0 :
+        if int(cores)<=0 :
             print("Hey you can't use negative number of cpu cores!!")
             exit()
         if int(cores) > available_cores:
