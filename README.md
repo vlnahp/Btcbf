@@ -2,16 +2,16 @@
 
 ## **Description**
 
-A fast and efficient bitcoin private key brute force written in python. The method is based on generation of random private keys and their corresponding public address; then searching each through a list of addresses with positive balance.
+A fast and efficient bitcoin private key brute force written in python. The method is based on the generation of random private keys and their corresponding public address; then searching each through a list of addresses with a positive balance.
 
-It is fast because the number of loops is multiplied by the number of addresses available in the list. It means if your CPU processes 500 loops per second; and 10000 addresses are in the list 5milion possibilities are checked per second(My tiny 2.9GHz dual core cpu has the rate of 1000its/s, using a list of 10k addresses means 10milion possibilities are checked per second!) . However, there are 2^128 possibilities to check; so not fast enough anyway. Also, no api and internet connection needed!
+It is fast because the number of loops is multiplied by the number of addresses available in the list. It means if your CPU processes 500 loops per second; and 10000 addresses are in the list 5milion possibilities are checked per second(My tiny 2.9GHz dual-core CPU has the rate of 1000its/s, using a list of 10k addresses means 10milion possibilities are checked per second!). However, there are 2^128 possibilities to check; so not fast enough anyway. Also, no API and internet connection is needed!
 
 ## **Also can be used as wallet generator!**
 
-Just type "gen" and a secure wallet is printed for you. The reason to use this method instead of the available websites and online wallets? Because you enter your email, use internet connections and etc. Your email can be hacked, your online wallet can be vulnerable to attacks and many other ways that makes them risky. Use my tool to generate a wallet offline in order to remain safe.   
+Just type "gen" and a secure wallet is printed for you. The reason to use this method instead of the available websites and online wallets? Because you enter your email, use internet connections, etc. Your email can be hacked, your online wallet can be vulnerable to attacks, and many other ways that make them risky. Use my tool to generate a wallet offline in order to remain safe.   
 
 ## The Goal
-Main goal is to prove bitcoin is secure. At least until the day that Quantom computers start working against it!:innocent:
+The main goal is to prove bitcoin is secure. At least until the day that Quantum computers start working against it!:innocent:
 
 ## **Requirements**
 
@@ -19,9 +19,11 @@ Main goal is to prove bitcoin is secure. At least until the day that Quantom com
   
 >  $ pip install -r requirements.txt
   
->  $ pip install git+https://github.com/mcdallas/cryptotools.git@master#egg=cryptotools (for linux) (on windows download and install from github manually: https://github.com/mcdallas/cryptotools )
+>  $ pip install git+https://github.com/mcdallas/cryptotools.git@master#egg=cryptotools (for Linux) (on windows download and install from GitHub manually: https://github.com/mcdallas/cryptotools )
 
+On windows download this [link](https://github.com/mcdallas/cryptotools/archive/refs/heads/master.zip). Then navigate to the path where python is installed( use _>where.exe python_ command in cmd or PowerShell to find it). Go to _/lib/site-packages_ and extract the zip file downloaded before to this folder. Navigate to _/cryptotools-master_, open PowerShell or cmd, execute _>python setup.py install command_, and you are done!!
 
+I used this module because of its speed. I have tried many modules and this was the fastest thanks to @mcdallas
 
 ## **Usage**
 
@@ -30,17 +32,17 @@ Main goal is to prove bitcoin is secure. At least until the day that Quantom com
   "What do you want to do? <<options: [gen]: generate wallet address and private key, [brute]: brute force bitcoin, [exit]: exit>>" Type your desired action and follow instructions.(I love to interact with my code:slightly_smiling_face:)
   
 ### While brute
-If any key found; a text file named "foundkey.txt" containing the found private key and public address is saved.
+If any key is found; a text file named "foundkey.txt" containing the found private key and public address is saved.
 
 ### While gen
-An address with its corresponding private key in printed.
+An address with its corresponding private key is printed.
 
 ### While exit
 Exits!
 
 ## **Donation**
 
-Make my btc address a good option to be in the list!:cowboy_hat_face:
+Make my BTC address a good option to be on the list!:cowboy_hat_face:
 
 
 >BTC: 13r5Xr3D1j1RgwVt6KToXn8h9vqYb49eNx
