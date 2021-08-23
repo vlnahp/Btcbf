@@ -17,18 +17,21 @@ The main goal is to prove bitcoin is secure. At least until the day that Quantum
 
   The "address.txt" file containing a list of public addresses(Add as many as positive balance addresses possible to this file; this increases your chance of success, find more addresses [here](https://bitinfocharts.com/top-100-richest-bitcoin-addresses.html) ).
   
->  $ pip install -r requirements.txt
-  
->  $ pip install git+https://github.com/mcdallas/cryptotools.git@master#egg=cryptotools (for Linux) (on windows download and install from GitHub manually: https://github.com/mcdallas/cryptotools )
+```
+  $ pip install -r requirements.txt
+```  
+```
+  $ pip install git+https://github.com/mcdallas/cryptotools.git@master#egg=cryptotools (for Linux) 
+```
 
 On windows download this [link](https://github.com/mcdallas/cryptotools/archive/refs/heads/master.zip). Then navigate to the path where python is installed( use _>where.exe python_ command in cmd or PowerShell to find it). Go to _/lib/site-packages_ and extract the zip file downloaded before to this folder. Navigate to _/cryptotools-master_, open PowerShell or cmd, execute _>python setup.py install command_, and you are done!!
 
 I used this module because of its speed. I have tried many modules and this was the fastest thanks to @mcdallas
 
 ## **Usage**
-
->  $ python Btcbf.py
-  
+```
+  $ python Btcbf.py
+```  
   "What do you want to do? <<options: [gen]: generate wallet address and private key, [brute]: brute force bitcoin, [exit]: exit>>" Type your desired action and follow instructions.(I love to interact with my code:slightly_smiling_face:)
   
 ### While brute
@@ -50,3 +53,5 @@ Make my BTC address a good option to be on the list!:cowboy_hat_face:
 >ETH: 0x25A296248f9F4a5e2343Dd19faF1b49594746620
 
 >BCH: qq0ns64247xhqxjzv8cnjw7hl4scuc0jryzu37p4s9
+
+
