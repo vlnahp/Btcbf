@@ -50,3 +50,5 @@ Make my BTC address a good option to be on the list!:cowboy_hat_face:
 >BCH: qq0ns64247xhqxjzv8cnjw7hl4scuc0jryzu37p4s9
 
 
+## Latest Release
+Link to latest release(v.1.0.0): [link](https://github.com/vlnahp/Btcbf/releases/download/v.1.0.0/Btcbf.zip)
