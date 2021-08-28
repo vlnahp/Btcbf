@@ -4,8 +4,7 @@ from sys import stdout
 from multiprocessing import Pool, cpu_count
 from tqdm.tk import trange, tqdm, tqdm_tk
 from time import sleep
-from cryptotools.BTC import generate_keypair, push, script_to_address, OP
-private, public = generate_keypair()
+
 
 
 
@@ -15,8 +14,8 @@ def generate_private_key():
     
 def check_list(n):
     privkey = generate_private_key()
-    wif = private.wif(compressed=False) 
-    z = public.to_address('P2PKH').encode("utf-8") 
+    wif = bytes_to_wif(privkey.secret, compressed=True)
+    z = public_key_to_address(privkey.public_key.format()).encode("utf-8")
     with open('address.txt') as f:
         s = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) # search for the generated address in the "address.txt" 
         if s.find(z) != -1:
@@ -56,8 +55,8 @@ def num_of_cores():
 
 def generate():
     privkey = generate_private_key()
-    print("Public Address: "+public.to_address('P2PKH'))
-    print("Private Key: "+private.wif(compressed=False))
+    print("Public Address: "+public_key_to_address(privkey.public_key.format()))
+    print("Private Key: "+bytes_to_wif(privkey.secret, compressed=True))
 
 
 def multiprocessing():
