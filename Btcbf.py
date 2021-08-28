@@ -4,7 +4,7 @@ from sys import stdout
 from multiprocessing import Pool, cpu_count
 from tqdm.tk import trange, tqdm, tqdm_tk
 from time import sleep
-
+from bit.format import bytes_to_wif, public_key_to_address
 
 
 
