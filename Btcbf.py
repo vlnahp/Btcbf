@@ -30,7 +30,7 @@ def check_list(n):
             #print ('false')
             #print(wif.decode("utf-8"))
             #print(z)
-    n
+    
 
 def num_of_cores():
     available_cores = cpu_count()
