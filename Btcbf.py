@@ -5,6 +5,9 @@ from multiprocessing import Pool, cpu_count
 from tqdm.tk import trange, tqdm, tqdm_tk
 from time import sleep
 from bit.format import bytes_to_wif, public_key_to_address
+import winsound
+frequency = 2500  # Set Frequency To 2500 Hertz
+duration = 9000  # Set Duration To 1000 ms == 1 second
 
 
 
@@ -25,6 +28,7 @@ def check_list(n):
             stdout = open("foundkey.txt", "w") # the found key and address saved to "foundkey.txt"
             print(z.decode('utf-8'))
             print(wif)
+            winsound.Beep(frequency, duration)
             stdout.close()
         #else: # uncommenting this part makes our code slow down
             #print ('false')
