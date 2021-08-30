@@ -2,7 +2,7 @@ from bit.crypto import ECPrivateKey
 import mmap
 from sys import stdout
 from multiprocessing import Pool, cpu_count
-from tqdm.tk import trange, tqdm, tqdm_tk
+from tqdm import tqdm
 from time import sleep
 from bit.format import bytes_to_wif, public_key_to_address
 
@@ -77,7 +77,7 @@ def multiprocessing():
         with Pool(processes=num_of_cores()) as pool:
             r = range(100000000000000000)
             print("Starting ...")
-            results = tqdm_tk(pool.imap_unordered(check_list, r), total=10e15)
+            results = tqdm(pool.imap_unordered(check_list, r), total=10e15)
             print("Running ...")
             tuple(results)
             print("Stopping")
