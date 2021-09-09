@@ -8,7 +8,7 @@ It is fast because the number of loops is multiplied by the number of addresses 
 
 ## **Also can be used as wallet generator!**
 
-Just type "gen" and a secure wallet is printed for you. The reason to use this method instead of the available websites and online wallets? Because you enter your email, use internet connections, etc. Your email can be hacked, your online wallet can be vulnerable to attacks, and many other ways that make them risky. Use my tool to generate a wallet offline in order to remain safe.   
+Just type "gen" and a secure wallet is printed for you. The reason to use this method instead of the available websites and online wallets? Because you enter your email, use internet connections, etc. Your email can be hacked, your online wallet can be vulnerable to attacks, and many other ways that make them risky. Use my tool *-or any other tool that does the same way-* to generate a wallet offline in order to remain safe.   
 
 ## The Goal
 The main goal is to prove bitcoin is secure. At least until the day that Quantum computers start working against it!:innocent:
