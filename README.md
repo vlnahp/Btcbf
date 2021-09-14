@@ -4,11 +4,11 @@
 
 A fast and efficient bitcoin private key brute force written in python. The method is based on the generation of random private keys and their corresponding public address; then searching each through a list of addresses with a positive balance.
 
-It is fast because the number of loops is multiplied by the number of addresses available in the list. It means if your CPU processes 500 loops per second; and 10000 addresses are in the list 5milion possibilities are checked per second(My tiny 2.9GHz dual-core CPU has the rate of 1000its/s, using a list of 10k addresses means 10milion possibilities are checked per second!). However, there are 2^128 possibilities to check; so not fast enough anyway. Also, no API and internet connection is needed!
+It is fast because the number of loops is multiplied by the number of addresses available in the list. It means if your CPU processes 500 loops per second; and 10000 addresses are in the list 5milion possibilities are checked per second(My tiny 2.9GHz dual-core CPU has the rate of 1000its/s, using a list of 10k addresses means 10milion possibilities are checked per second!). However, there are 2^128 possibilities to check; so not fast enough anyway.
 
 ## **Also can be used as wallet generator!**
 
-Just type "gen" and a secure wallet is printed for you. The reason to use this method instead of the available websites and online wallets? Because you enter your email, use internet connections, etc. Your email can be hacked, your online wallet can be vulnerable to attacks, and many other ways that make them risky. Use my tool *-or any other tool that does the same way-* to generate a wallet offline in order to remain safe.   
+Just type "gen" and a secure wallet is printed for you. The reason to use this method instead of the available websites and online wallets? Because you enter your email, use internet connections, etc. Your email can be hacked, your online wallet can be vulnerable to attacks, and many other ways that make them risky. Use my tool *-or any other tool that works the same way-* to generate a wallet offline in order to remain safe.   
 
 ## The Goal
 The main goal is to prove bitcoin is secure. At least until the day that Quantum computers start working against it!:innocent:
@@ -23,10 +23,13 @@ The main goal is to prove bitcoin is secure. At least until the day that Quantum
 ## **Usage**
 
 ```$ python Btcbf.py```  
-  "What do you want to do? <<options: [gen]: generate wallet address and private key, [brute]: brute force bitcoin, [exit]: exit>>" Type your desired action and follow instructions.(I love to interact with my code:slightly_smiling_face:)
+  "What do you want to do? "What do you want to do? <<options: [gen]: generate wallet address and private key, [brute1]: brute force bitcoin offline, [brute2]: brute force bitcoin online, [exit]: exit>>" Type your desired action and follow instructions.(I love to interact with my code:slightly_smiling_face:)
   
-### While brute
-If any key is found; a text file named "foundkey.txt" containing the found private key and public address is saved.
+### While brute1
+Generated addresses are searched within the "address.txt". If any key is found; a text file named "foundkey.txt" containing the found private key and public address is saved.
+
+### While brute2
+Generated addresses are searched in the blockchain. **CAUTION** this will consume too much internet. Also it has limits and won't respond after certain number of requests sent.
 
 ### While gen
 An address with its corresponding private key is printed.
