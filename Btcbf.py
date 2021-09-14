@@ -1,3 +1,4 @@
+import urllib.request, json
 from bit.crypto import ECPrivateKey
 import mmap
 from sys import stdout
@@ -30,8 +31,28 @@ def check_list(n):
             #print ('false')
             #print(wif.decode("utf-8"))
             #print(z)
-    
+            
+def check_list_online(n):
+    privkey = generate_private_key()
+    wif = bytes_to_wif(privkey.secret, compressed=True) #private.wif(compressed=False) 
+    z = public_key_to_address(privkey.public_key.format()).encode("utf-8")
+    url = urllib.request.urlopen("https://blockchain.coinmarketcap.com/api/address?address="+str(z)+"&symbol=BTC&start=1&limit=10")
+    data = json.loads(url.read().decode())
+    if data['transaction_count']>0:
+        print(data['transaction_count'])
+        print(z)
+        print(wif)
+        print("Wow active address found!!")
+        print(z.decode('utf-8'))
+        print(wif)
+        stdout = open("foundkey.txt", "w") # the found key and address saved to "foundkey.txt"
+        print(z.decode('utf-8'))
+        print(wif)
+        stdout.close()
+        exit()
 
+            
+            
 def num_of_cores():
     available_cores = cpu_count()
     cores = input("How many cores to be used? (leave empty to use all available cores): ")
@@ -61,7 +82,7 @@ def generate():
 
 def multiprocessing():
     if __name__ == "__main__":
-        inp = input("What do you want to do? <<options: [gen]: generate wallet address and private key, [brute]: brute force bitcoin, [exit]: exit>> ")
+        inp = input("What do you want to do? <<options: [gen]: generate wallet address and private key, [brute1]: brute force bitcoin offline, [brute2]: brute force bitcoin online, [exit]: exit>> ")
         if inp == "gen":
             generate()
             print("Your wallet is ready!")
@@ -72,12 +93,19 @@ def multiprocessing():
             print("exitting")
             sleep(5)
             exit()
-        if inp == "brute":
+        if inp == "brute1":
+            target = check_list
+            processn = num_of_cores()
+            pass
+        if inp == "brute2":
+            print("OK I will consume whole your internet")
+            target = check_list_online
+            processn = num_of_cores()
             pass
         with Pool(processes=num_of_cores()) as pool:
             r = range(100000000000000000)
             print("Starting ...")
-            results = tqdm(pool.imap_unordered(check_list, r), total=10e15)
+            results = tqdm(pool.imap_unordered(target, r), total=10e15)
             print("Running ...")
             tuple(results)
             print("Stopping")
