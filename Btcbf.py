@@ -40,8 +40,6 @@ def check_list_online(n):
     data = json.loads(url.read().decode())
     if data['transaction_count']>0:
         print(data['transaction_count'])
-        print(z)
-        print(wif)
         print("Wow active address found!!")
         print(z.decode('utf-8'))
         print(wif)
@@ -86,9 +84,9 @@ def multiprocessing():
         if inp == "gen":
             generate()
             print("Your wallet is ready!")
-            print("exitting...")
-            sleep(3)
-            exit()
+            e = input("Press any key to exit")
+            if e:
+                exit()
         if inp == "exit":
             print("exitting")
             sleep(5)
