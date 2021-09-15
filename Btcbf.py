@@ -1,7 +1,7 @@
-import urllib.request, json
+import requests
+import json
 from bit.crypto import ECPrivateKey
 import mmap
-from sys import stdout
 from multiprocessing import Pool, cpu_count
 from tqdm import tqdm
 from time import sleep
@@ -23,10 +23,10 @@ def check_list(n):
             print("Wow matching address found!!")
             print(z.decode('utf-8'))
             print(wif)
-            stdout = open("foundkey.txt", "w") # the found key and address saved to "foundkey.txt"
-            print(z.decode('utf-8'))
-            print(wif)
-            stdout.close()
+            f = open("foundkey.txt", "a") # the found key and address saved to "foundkey.txt"
+            f.write(z.decode('utf-8'))
+            f.write(wif)
+            f.close()
         #else: # uncommenting this part makes our code slow down
             #print ('false')
             #print(wif.decode("utf-8"))
@@ -36,17 +36,17 @@ def check_list_online(n):
     privkey = generate_private_key()
     wif = bytes_to_wif(privkey.secret, compressed=True) #private.wif(compressed=False) 
     z = public_key_to_address(privkey.public_key.format()).encode("utf-8")
-    url = urllib.request.urlopen("https://blockchain.coinmarketcap.com/api/address?address="+str(z)+"&symbol=BTC&start=1&limit=10")
-    data = json.loads(url.read().decode())
+    url = requests.get("https://blockchain.coinmarketcap.com/api/address?address="+str(z)+"&symbol=BTC&start=1&limit=10")
+    data = json.loads(url.text)
     if data['transaction_count']>0:
         print(data['transaction_count'])
         print("Wow active address found!!")
         print(z.decode('utf-8'))
         print(wif)
-        stdout = open("foundkey.txt", "w") # the found key and address saved to "foundkey.txt"
-        print(z.decode('utf-8'))
-        print(wif)
-        stdout.close()
+        f = open("foundkey.txt", "a") # the found key and address saved to "foundkey.txt"
+        f.write(z.decode('utf-8'))
+        f.write(wif)
+        f.close()
         exit()
 
             
@@ -94,12 +94,10 @@ def multiprocessing():
         if inp == "brute1":
             target = check_list
             processn = num_of_cores()
-            pass
         if inp == "brute2":
             print("OK I will consume whole your internet")
             target = check_list_online
             processn = num_of_cores()
-            pass
         with Pool(processes=num_of_cores()) as pool:
             r = range(100000000000000000)
             print("Starting ...")
