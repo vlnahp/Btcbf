@@ -1,3 +1,4 @@
+   [![CodeFactor](https://www.codefactor.io/repository/github/vlnahp/btcbf/badge/main)](https://www.codefactor.io/repository/github/vlnahp/btcbf/overview/main)
 # Btcbf                                                                
 
 ## **Description**
