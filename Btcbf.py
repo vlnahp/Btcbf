@@ -51,23 +51,25 @@ def check_list_online(n):
 def num_of_cores():
     available_cores = cpu_count()
     cores = input("How many cores to be used? (leave empty to use all available cores): ")
+    num = 0
     if cores == "":
-        return int(available_cores)
+        num = int(available_cores)
     elif cores.isdigit():
         if 0 < int(cores) <= available_cores:
-            return int(cores)
+            num = int(cores)
         elif int(cores)<=0 :
             print("Hey you can't use negative number of cpu cores!!")
             sleep(5)
             exit()
         elif int(cores) > available_cores:
             print("Haha, you only have "+str(available_cores)+" cores. So we use "+str(available_cores)+" cores!!")
-            return int(available_cores)
+            num = int(available_cores)
     else:
         print("Wrong input!")
         print("exitting...")
         sleep(5)
         exit()
+    return num
 
 def generate():
     privkey = generate_private_key()
