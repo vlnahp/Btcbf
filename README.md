@@ -7,7 +7,7 @@
 
 A fast and efficient bitcoin private key brute force written in python. The method is based on the generation of random private keys and their corresponding public address; then searching each through a list of addresses with a positive balance.
 
-It is fast because the number of loops is multiplied by the number of addresses available in the list. It means if your CPU processes 500 loops per second; and 10000 addresses are in the list 5milion possibilities are checked per second(My tiny 2.9GHz dual-core CPU has the rate of 1000its/s, using a list of 10k addresses means 10milion possibilities are checked per second!). However, there are 2^128 possibilities to check; so not fast enough anyway.
+It is fast because the number of loops is multiplied by the number of addresses available in the list. It means if your CPU processes 500 loops per second; and 10000 addresses are in the list 5milion possibilities are checked per second(My tiny 2.9GHz dual-core CPU has the rate of 3200its/s, using a list of 10k addresses means 32milion possibilities are checked per second!). However, there are 2^128 possibilities to check; so not fast enough anyway.
 
 ## **Also can be used as wallet generator!**
 
