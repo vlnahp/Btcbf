@@ -53,7 +53,7 @@ Make my BTC address a good option to be on the list!:cowboy_hat_face:
 
 
 ## Latest Release
-Link to latest release(v1.1.0): [link](https://github.com/vlnahp/Btcbf/releases/download/v1.1.0/Btcbf-windows64-v1.1.0.zip)
+Link to latest release(v1.1.0): [link](https://github.com/vlnahp/Btcbf/releases/download/v1.2.1/Btcbf-windows64-v.1.2.0.tar.xz)
 
 ## :star:
 Finally send me a _star:star2::arrow_upper_right:_ if you liked Btcbf!
