@@ -1,8 +1,7 @@
    [![CodeFactor](https://www.codefactor.io/repository/github/vlnahp/btcbf/badge/main)](https://www.codefactor.io/repository/github/vlnahp/btcbf/overview/main)
    
-   ![](https://github.com/vlnahp/Logos/blob/main/Btcbf.png)
 # Btcbf                                                                
-
+A new way to support Btcbf and to be thankful to open source projects, is to buy the icon of Btcbf as NFT from [here](https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/29326638034131043689181811786030646451603799113214635741285531928455660175365/). There are 5 ones available. Next versions will have new looking and higher value.
 ## **Description**
 
 A fast and efficient bitcoin private key brute force written in python. The method is based on the generation of random private keys and their corresponding public address; then searching each through a list of addresses with a positive balance.
@@ -18,16 +17,17 @@ The main goal is to prove bitcoin is secure. At least until the day that Quantum
 
 ## **Requirements**
 
-  The "address.txt" file containing a list of public addresses(Add as many as positive balance addresses possible to this file; this increases your chance of success, find more addresses [here](https://bitinfocharts.com/top-100-richest-bitcoin-addresses.html) ).
-  
+  The "address.txt" file containing a list of public addresses is necessary in brute mode(Add as many as positive balance addresses possible to this file; this increases your chance of success, find more addresses [here](https://bitinfocharts.com/top-100-richest-bitcoin-addresses.html) ).
+
+And run this command:
+
 ```$ pip install -r requirements.txt```  
 
 
 ## **Usage**
+Just execute this command:`$ python Btcbf.py`, Btcbf tells you what to do!
+`"What do you want to do? <<options: [gen]: generate wallet address and private key, [brute1]: brute force bitcoin offline mode, [brute2]: brute force bitcoin online mode, [exit]: exit>>"` Type your desired action and follow instructions.(I love to interact with my program🙂)
 
-```$ python Btcbf.py```  
-  "What do you want to do? "What do you want to do? <<options: [gen]: generate wallet address and private key, [brute1]: brute force bitcoin offline, [brute2]: brute force bitcoin online, [exit]: exit>>" Type your desired action and follow instructions.(I love to interact with my code:slightly_smiling_face:)
-  
 ### While brute1
 Generated addresses are searched within the "address.txt". If any key is found; a text file named "foundkey.txt" containing the found private key and public address is saved.
 
