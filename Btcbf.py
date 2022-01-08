@@ -1,52 +1,49 @@
 import requests
 import json
-from bit.crypto import ECPrivateKey
+from bit import Key
 from multiprocessing import Pool, cpu_count
 from tqdm import tqdm
 from time import sleep
-from bit.format import bytes_to_wif, public_key_to_address
 
-s= open("address.txt", "r").read()
+with open("address.txt", "r") as file:
+    s = file.read()
+
 
 def generate_private_key():
-    private_key = ECPrivateKey()
-    return private_key
-    
+    return Key()
+
+
 def check_list(n):
     privkey = generate_private_key()
-    wif = bytes_to_wif(privkey.secret, compressed=True)
-    z = public_key_to_address(privkey.public_key.format())
+    z = privkey.address
     if s.find(z) != -1:
-            print("Wow matching address found!!")
-            print(z)
-            print(wif)
-            f = open("foundkey.txt", "a") # the found key and address saved to "foundkey.txt"
-            f.write(z)
-            f.write(wif)
-            f.close()
-        #else: # uncommenting this part makes our code slow down
-            #print ('false')
-            #print(wif.decode("utf-8"))
-            #print(z)
-            
+        wif = privkey.to_wif()
+        print("Wow matching address found!!")
+        print(z)
+        print(wif)
+        with open("foundkey.txt", "a") as result: # Save found keys to "foundkey.txt"
+            result.write(f"address: {z}\nwif: {wif}\n===")
+     #else: # uncommenting this part makes our code slow down
+         #print ('false')
+         #print(privkey.to_wif())
+         #print(z)
+
+
 def check_list_online(n):
     privkey = generate_private_key()
-    wif = bytes_to_wif(privkey.secret, compressed=True) #private.wif(compressed=False) 
-    z = public_key_to_address(privkey.public_key.format()).encode("utf-8")
+    wif = privkey.to_wif()
+    z = privkey.address
     url = requests.get("https://blockchain.coinmarketcap.com/api/address?address="+str(z)+"&symbol=BTC&start=1&limit=10")
     data = json.loads(url.text)
-    if data['transaction_count']>0:
+    if data['transaction_count'] > 0:
         print(data['transaction_count'])
         print("Wow active address found!!")
-        print(z.decode('utf-8'))
+        print(z)
         print(wif)
-        f = open("foundkey.txt", "a") # the found key and address saved to "foundkey.txt"
-        f.write(z.decode('utf-8'))
-        f.write(wif)
-        f.close()
+        with open("foundkey.txt", "a") as result: # Save found keys to "foundkey.txt"
+            result.write(f"address: {z}\nwif: {wif}\n===")
         exit()
 
-            
             
 def num_of_cores():
     available_cores = cpu_count()
@@ -73,8 +70,8 @@ def num_of_cores():
 
 def generate():
     privkey = generate_private_key()
-    print("Public Address: "+public_key_to_address(privkey.public_key.format()))
-    print("Private Key: "+bytes_to_wif(privkey.secret, compressed=True))
+    print("Public Address: " + privkey.address)
+    print("Private Key: " + privkey.to_wif())
 
 
 def multiprocessing():
@@ -110,4 +107,6 @@ def multiprocessing():
             tuple(results)
             print("Stopping")
             print()
+
+
 multiprocessing()
