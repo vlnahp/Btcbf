@@ -6,7 +6,8 @@ from tqdm import tqdm
 from time import sleep
 from bit.format import bytes_to_wif, public_key_to_address
 
-s= open("address.txt", "r").read()
+with open("address.txt", "r") as file:
+    s = file.read()
 
 def generate_private_key():
     private_key = ECPrivateKey()
