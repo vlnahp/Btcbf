@@ -1,113 +1,163 @@
 import requests
 import json
-from bit.crypto import ECPrivateKey
-from multiprocessing import Pool, cpu_count
-from tqdm import tqdm
-from time import sleep
-from bit.format import bytes_to_wif, public_key_to_address
+from bit import Key
+from multiprocessing import Pool, cpu_count, freeze_support
+from time import sleep, time
 
-s= open("address.txt", "r").read()
 
-def generate_private_key():
-    private_key = ECPrivateKey()
-    return private_key
-    
-def check_list(n):
-    privkey = generate_private_key()
-    wif = bytes_to_wif(privkey.secret, compressed=True)
-    z = public_key_to_address(privkey.public_key.format())
-    if s.find(z) != -1:
+time_0 = time()
+load_data = open("address.txt", "r").read()
+prev_t = 0
+prev_n=0
+
+
+def random_brute(n):
+    global prev_t,prev_n
+    key = Key()
+    time_cur=time()
+    elapsed_t = int(time_cur-time_0)
+    # speed algo
+    if elapsed_t>(prev_t + 5):
+        print("current n: "+str(n)+", current rate: "+str((n-prev_n)/5)+"/s"+", elapsed time: "+str(elapsed_t/60)+"minutes\r", end="\r")
+        prev_t=elapsed_t
+        prev_n=n
+    if load_data.find(key.address) != -1:
             print("Wow matching address found!!")
-            print(z)
-            print(wif)
+            print("Public Adress: "+key.address)
+            print("Private Key: "+key.to_wif())
             f = open("foundkey.txt", "a") # the found key and address saved to "foundkey.txt"
-            f.write(z)
-            f.write(wif)
+            f.write(key.address)
+            f.write(key.to_wif())
             f.close()
-        #else: # uncommenting this part makes our code slow down
-            #print ('false')
-            #print(wif.decode("utf-8"))
-            #print(z)
+            sleep(500)
+            exit()
             
-def check_list_online(n):
-    privkey = generate_private_key()
-    wif = bytes_to_wif(privkey.secret, compressed=True) #private.wif(compressed=False) 
-    z = public_key_to_address(privkey.public_key.format()).encode("utf-8")
-    url = requests.get("https://blockchain.coinmarketcap.com/api/address?address="+str(z)+"&symbol=BTC&start=1&limit=10")
+            
+            
+def random_online_brute(n):
+    global prev_t,prev_n
+    key = Key()
+    time_cur=time()
+    elapsed_t = int(time_cur-time_0)
+    # speed algo
+    if elapsed_t >(prev_t + 5):
+        print("current n: "+str(n)+", current rate: "+str((n-prev_n)/5)+"/s"+", elapsed time: "+str(elapsed_t/60)+"minutes\r", end="\r")
+        prev_t=elapsed_t
+        prev_n=n
+    url = requests.get("https://blockchain.coinmarketcap.com/api/address?address="+key.address+"&symbol=BTC&start=1&limit=10")
     data = json.loads(url.text)
     if data['transaction_count']>0:
         print(data['transaction_count'])
         print("Wow active address found!!")
-        print(z.decode('utf-8'))
-        print(wif)
+        print(key.address)
+        print(key.to_wif())
         f = open("foundkey.txt", "a") # the found key and address saved to "foundkey.txt"
-        f.write(z.decode('utf-8'))
-        f.write(wif)
+        f.write(key.address+"\n")
+        f.write(key.to_wif()+"\n")
         f.close()
+        sleep(500)
         exit()
 
             
             
 def num_of_cores():
     available_cores = cpu_count()
-    cores = input("How many cores to be used? (leave empty to use all available cores): ")
-    num = 0
+    cores = input("\navailable number of cores: "+str(available_cores)+"\n \n How many cores to be used? (leave empty to use all available cores) \n \n Type something>")
     if cores == "":
-        num = int(available_cores)
+        return int(available_cores)
     elif cores.isdigit():
         if 0 < int(cores) <= available_cores:
-            num = int(cores)
+            return int(cores)
         elif int(cores)<=0 :
             print("Hey you can't use negative number of cpu cores!!")
-            sleep(5)
+            input("Press any key to exit")
             exit()
         elif int(cores) > available_cores:
-            print("Haha, you only have "+str(available_cores)+" cores. So we use "+str(available_cores)+" cores!!")
-            num = int(available_cores)
+            print("\n You only have "+str(available_cores)+" cores")
+            print(" Are you sure you want to use {0} cores?".format(cores))
+            core_input = input("\n [y] or [n]>")
+            if core_input == "y":
+                return int(cores)
+            else:
+                print("using available number of cores")
+                return int(available_cores)
     else:
         print("Wrong input!")
-        print("exitting...")
-        sleep(5)
+        input("Press any key to exit")
         exit()
-    return num
 
-def generate():
-    privkey = generate_private_key()
-    print("Public Address: "+public_key_to_address(privkey.public_key.format()))
-    print("Private Key: "+bytes_to_wif(privkey.secret, compressed=True))
+def generate_random_address():
+    key = Key()
+    print("\n Public Address: "+key.address)
+    print(" Private Key: "+key.to_wif())
+    
+def generate_address_fromKey(privateKey):
+    if privateKey != "":
+        key = Key(privateKey)
+        print("\n Public Address: "+key.address)
+        print("\n Your wallet is ready!")
+    else:
+        print("no entry")
 
 
 def multiprocessing():
     if __name__ == "__main__":
-        inp = input("What do you want to do? <<options: [gen]: generate wallet address and private key, [brute1]: brute force bitcoin offline, [brute2]: brute force bitcoin online, [exit]: exit>> ")
-        if inp == "gen":
-            generate()
-            print("Your wallet is ready!")
-            e = input("Press any key to exit")
+        freeze_support()
+        user_input = input("\n What do you want to do? \n \n   [1]: generate random key pair \n   [2]: generate public address from private key \n   [3]: brute force bitcoin offline mode \n   [4]: brute force bitcoin online mode \n   [0]: exit>> \n \n Type something>")
+        if user_input == "1":
+            generate_random_address()
+            print("\n Your wallet is ready!")
+            input("\n Press any key to exit")
             exit()
-        elif inp == "exit":
+        if user_input == "2":
+            private_key = input("\n Enter Private Key>")
+            try:
+                generate_address_fromKey(private_key)
+            except:
+                print("\n incorrect key format")
+            input("Press any key to exit")
+            exit()
+        elif user_input == "3":
+            method_input = input(" \n Enter the desired number: \n \n   [1]: random attack \n   [2]: sequential attack \n   [0]: exit \n \n Type something>")
+            if method_input=="1":
+                target = random_brute
+            elif method_input=="2":
+                print("sequential attack will be available soon!")
+                input("Press any key to exit")
+                exit()
+            else:
+                print("exitting...")
+                exit()
+            cores_to_be_used = num_of_cores()
+        elif user_input == "4":
+            method_input = input(" \n Enter the desired number: \n \n   [1]: random attack \n   [2]: sequential attack \n   [0]: exit \n \n Type something>")
+            if method_input=="1":
+                target = random_online_brute
+            elif method_input=="2":
+                print("sequential attack will be available soon!")
+                input("Press any key to exit")
+                exit()
+            else:
+                print("exitting...")
+                exit()
+            cores_to_be_used = num_of_cores()
+        elif user_input == "0":
             print("exitting")
-            sleep(5)
+            sleep(2)
             exit()
-        elif inp == "brute1":
-            target = check_list
-            processn = num_of_cores()
-        elif inp == "brute2":
-            print("OK I will consume whole your internet")
-            target = check_list_online
-            processn = num_of_cores()
         else:
-            print("No input. <gen> chosen automatically")
-            generate()
+            print("No input. <1> chosen automatically")
+            generate_random_address()
             print("Your wallet is ready!")
-            f = input("Press any key to exit")
+            input("Press any key to exit")
             exit()
-        with Pool(processes=processn) as pool:
+        with Pool(processes=cores_to_be_used) as pool:
             r = range(100000000000000000)
             print("Starting ...")
-            results = tqdm(pool.imap_unordered(target, r), total=10e15)
+            results = pool.imap_unordered(target, r)
             print("Running ...")
             tuple(results)
             print("Stopping")
             print()
-multiprocessing()
+if __name__ =="__main__":
+    multiprocessing()
