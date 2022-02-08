@@ -79,20 +79,20 @@ def generate():
 
 def multiprocessing():
     if __name__ == "__main__":
-        inp = input("What do you want to do? (enter options number):\n 1> [gen]: generate wallet address and private key\n 2> [brute1]: brute force bitcoin offline\n 3> [brute2]: brute force bitcoin online\n 4> [exit]: exit\n")
-        if inp == "1":
+        inp = input("What do you want to do? <<options: [gen]: generate wallet address and private key, [brute1]: brute force bitcoin offline, [brute2]: brute force bitcoin online, [exit]: exit>> ")
+        if inp == "gen":
             generate()
             print("Your wallet is ready!")
             e = input("Press any key to exit")
             exit()
-        elif inp == "4":
+        elif inp == "exit":
             print("exitting")
             sleep(5)
             exit()
-        elif inp == "2":
+        elif inp == "brute1":
             target = check_list
             processn = num_of_cores()
-        elif inp == "3":
+        elif inp == "brute2":
             print("OK I will consume whole your internet")
             target = check_list_online
             processn = num_of_cores()
