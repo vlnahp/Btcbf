@@ -70,7 +70,7 @@ def num_of_cores():
             return int(cores)
         elif int(cores)<=0 :
             print("Hey you can't use negative number of cpu cores!!")
-            input("Press any key to exit")
+            input("Press Enter to exit")
             exit()
         elif int(cores) > available_cores:
             print("\n You only have "+str(available_cores)+" cores")
@@ -83,7 +83,7 @@ def num_of_cores():
                 return int(available_cores)
     else:
         print("Wrong input!")
-        input("Press any key to exit")
+        input("Press Enter to exit")
         exit()
 
 def generate_random_address():
@@ -107,7 +107,7 @@ def multiprocessing():
         if user_input == "1":
             generate_random_address()
             print("\n Your wallet is ready!")
-            input("\n Press any key to exit")
+            input("\n Press Enter to exit")
             exit()
         if user_input == "2":
             private_key = input("\n Enter Private Key>")
@@ -115,7 +115,7 @@ def multiprocessing():
                 generate_address_fromKey(private_key)
             except:
                 print("\n incorrect key format")
-            input("Press any key to exit")
+            input("Press Enter to exit")
             exit()
         elif user_input == "3":
             method_input = input(" \n Enter the desired number: \n \n   [1]: random attack \n   [2]: sequential attack \n   [0]: exit \n \n Type something>")
@@ -123,7 +123,7 @@ def multiprocessing():
                 target = random_brute
             elif method_input=="2":
                 print("sequential attack will be available soon!")
-                input("Press any key to exit")
+                input("Press Enter to exit")
                 exit()
             else:
                 print("exitting...")
@@ -135,7 +135,7 @@ def multiprocessing():
                 target = random_online_brute
             elif method_input=="2":
                 print("sequential attack will be available soon!")
-                input("Press any key to exit")
+                input("Press Enter to exit")
                 exit()
             else:
                 print("exitting...")
@@ -149,7 +149,7 @@ def multiprocessing():
             print("No input. <1> chosen automatically")
             generate_random_address()
             print("Your wallet is ready!")
-            input("Press any key to exit")
+            input("Press Enter to exit")
             exit()
         with Pool(processes=cores_to_be_used) as pool:
             r = range(100000000000000000)
