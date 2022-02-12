@@ -64,10 +64,10 @@ def num_of_cores():
     available_cores = cpu_count()
     cores = input("\navailable number of cores: "+str(available_cores)+"\n \n How many cores to be used? (leave empty to use all available cores) \n \n Type something>")
     if cores == "":
-        return int(available_cores)
+        cores = int(available_cores)
     elif cores.isdigit():
         if 0 < int(cores) <= available_cores:
-            return int(cores)
+            pass
         elif int(cores)<=0 :
             print("Hey you can't use negative number of cpu cores!!")
             input("Press Enter to exit")
@@ -77,10 +77,11 @@ def num_of_cores():
             print(" Are you sure you want to use {0} cores?".format(cores))
             core_input = input("\n [y] or [n]>")
             if core_input == "y":
-                return int(cores)
+                cores = int(cores)
             else:
                 print("using available number of cores")
-                return int(available_cores)
+                cores = int(available_cores)
+        return cores
     else:
         print("Wrong input!")
         input("Press Enter to exit")
