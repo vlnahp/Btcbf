@@ -1,3 +1,2 @@
 bit
-tqdm
 requests
