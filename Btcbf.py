@@ -11,6 +11,7 @@ prev_t = 0
 prev_n=0
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 def main(user_input):
     def random_brute(n):
         global prev_t,prev_n
@@ -52,6 +53,8 @@ def main(user_input):
             print(key.address)
             print(key.to_wif())
 =======
+=======
+>>>>>>> parent of cd0126e (added gpu support)
 
 def random_brute(n):
     global prev_t,prev_n
