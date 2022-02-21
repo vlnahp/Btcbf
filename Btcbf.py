@@ -44,10 +44,9 @@ def random_online_brute(n):
         print("current n: "+str(n)+", current rate: "+str((n-prev_n)/5)+"/s"+", elapsed time: "+str(elapsed_t/60)+"minutes\r", end="\r")
         prev_t=elapsed_t
         prev_n=n
-    url = requests.get("https://blockchain.coinmarketcap.com/api/address?address="+key.address+"&symbol=BTC&start=1&limit=10")
-    data = json.loads(url.text)
-    if data['transaction_count']>0:
-        print(data['transaction_count'])
+    url = requests.get("https://blockchain.info/q/getreceivedbyaddress/"+key.address+"/")
+    if int(url.text)>0:
+        print(url.text['transaction_count'])
         print("Wow active address found!!")
         print(key.address)
         print(key.to_wif())

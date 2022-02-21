@@ -24,9 +24,14 @@ The main goal is to prove bitcoin is secure. At least until the day that Quantum
 
 There are also some useful tools implemented.
 
+
+
 ## **Requirements**
 
   In offline mode, a database is necessary. By default, it is `address.txt` containing some addresses. (Add as many as positive balance addresses possible to this file; this increases the chance of success, find more addresses [here](https://bitinfocharts.com/top-100-richest-bitcoin-addresses.html) ).
+  Let's be honest. Searching online takes too long and the addresses with balance included in the program are too scarce (as having a current text file with all
+  addresses would make this repository over 5GB).
+  So the users who wish can download the latest text file from [here](http://addresses.loyce.club/), rename and replace it with the address.txt
 
 To install the requirements run the command below:
 
