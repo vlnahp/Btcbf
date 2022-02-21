@@ -10,6 +10,7 @@ load_data = open("address.txt", "r").read()
 prev_t = 0
 prev_n=0
 
+<<<<<<< HEAD
 def main(user_input):
     def random_brute(n):
         global prev_t,prev_n
@@ -50,6 +51,23 @@ def main(user_input):
             print("Wow active address found!!")
             print(key.address)
             print(key.to_wif())
+=======
+
+def random_brute(n):
+    global prev_t,prev_n
+    key = Key()
+    time_cur=time()
+    elapsed_t = int(time_cur-time_0)
+    # speed algo
+    if elapsed_t>(prev_t + 5):
+        print("current n: "+str(n)+", current rate: "+str((n-prev_n)/5)+"/s"+", elapsed time: "+str(elapsed_t/60)+"minutes\r", end="\r")
+        prev_t=elapsed_t
+        prev_n=n
+    if load_data.find(key.address) != -1:
+            print("Wow matching address found!!")
+            print("Public Adress: "+key.address)
+            print("Private Key: "+key.to_wif())
+>>>>>>> parent of cd0126e (added gpu support)
             f = open("foundkey.txt", "a") # the found key and address saved to "foundkey.txt"
             f.write(key.address+"\n")
             f.write(key.to_wif()+"\n")
