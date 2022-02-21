@@ -45,9 +45,8 @@ def random_online_brute(n):
         prev_t=elapsed_t
         prev_n=n
     url = requests.get("https://blockchain.info/q/getreceivedbyaddress/"+key.address+"/")
-    data = json.loads(url.text)
-    if data['transaction_count']>0:
-        print(data['transaction_count'])
+    if int(url.text)>0:
+        print(url.text['transaction_count'])
         print("Wow active address found!!")
         print(key.address)
         print(key.to_wif())
