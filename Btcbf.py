@@ -1,5 +1,6 @@
 import requests
 import json
+from numba import jit, cuda
 from bit import Key
 from multiprocessing import Pool, cpu_count, freeze_support
 from time import sleep, time
@@ -10,7 +11,7 @@ load_data = open("address.txt", "r").read()
 prev_t = 0
 prev_n=0
 
-
+@jit()
 def random_brute(n):
     global prev_t,prev_n
     key = Key()
