@@ -151,7 +151,7 @@ def multiprocessing():
             print("Your wallet is ready!")
             input("Press Enter to exit")
             exit()
-        with Pool(processes=cores_to_be_used) as pool:
+        with Pool(processes=int(cores_to_be_used)) as pool:
             r = range(100000000000000000)
             print("Starting ...")
             results = pool.imap_unordered(target, r)
