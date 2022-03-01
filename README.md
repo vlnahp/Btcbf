@@ -1,7 +1,7 @@
-   [![CodeFactor](https://www.codefactor.io/repository/github/vlnahp/btcbf/badge/main)](https://www.codefactor.io/repository/github/vlnahp/btcbf/overview/main)
-   
-# Btcbf                                                                
-A new way to support Btcbf and to be thankful to open source projects, is to buy the icon of Btcbf as NFT from [here](https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/29326638034131043689181811786030646451603799113214635741285531928455660175365/). There are 5 ones available. The next versions will have new look and higher value.
+
+# Btcbf  [![CodeFactor](https://www.codefactor.io/repository/github/vlnahp/btcbf/badge/main)](https://www.codefactor.io/repository/github/vlnahp/btcbf/overview/main)
+   A new way to support Btcbf and to be thankful to open source projects, is to buy the icon of Btcbf as NFT from [here](https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/29326638034131043689181811786030646451603799113214635741285531928455660175365/). There are 5 ones available. The next versions will have new look and higher value.
+
 ## **Quick Start**
 ```
  $ git clone https://github.com/vlnahp/Btcbf.git
