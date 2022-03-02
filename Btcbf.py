@@ -30,7 +30,7 @@ class Btcbf():
                 if self.prev_n == 0:
                     self.prev_n = n
                 elapsed_t=cur_t-self.start_t
-                print("current n: "+str(n)+", current rate: "+str(abs(n-self.prev_n)//2)+"/s"+f", elapsed time: [{str(elapsed_t//3600)[:-2]}:{str(elapsed_t//60)[:-2]}:{int(elapsed_t%60)}], total: {n-self.start_r} ", end="\r")
+                print("current n: "+str(n)+", current rate: "+str(abs(n-self.prev_n)//2)+"/s"+f", elapsed time: [{str(elapsed_t//3600)[:-2]}:{str(elapsed_t//60%60)[:-2]}:{int(elapsed_t%60)}], total: {n-self.start_r} ", end="\r")
                 self.prev_n = n
                 if self.seq:
                     open("cache.txt","w").write(f"{self.cur_n}-{self.start_r}-{self.end_n}")
