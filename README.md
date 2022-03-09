@@ -10,7 +10,7 @@
 
  $ pip install -r requirements.txt
 
- $ python Btcbf.py or  $ python3 Btcbf.py in Linux
+ $ python Btcbf.py or  $ python3 Btcbf.py on Linux
 ```
 
 ## **Description**
@@ -36,7 +36,7 @@ To install the requirements run the command below:
 
 
 ## **Usage**
-Just execute this command: `$ python Btcbf.py` or `$ python3 Btcbf.py` for Linux, Btcbf tells you what to do!
+Just execute this command: `$ python Btcbf.py` or `$ python3 Btcbf.py` on Linux, Btcbf tells you what to do!
 
 Type your desired action and follow instructions. (I love to interact with my program🙂)
 
