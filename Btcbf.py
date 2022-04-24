@@ -147,7 +147,7 @@ class Btcbf():
                     r0=open("cache.txt").read().split("-")
                     print(f"resume range {r0[0]}-{r0[2]}")
                     with ThreadPoolExecutor(max_workers=self.num_of_cores()) as pool:
-                        print("\nStarting ...\n")
+                        print("\nResuming ...\n")
                         self.start_t = time()
                         self.start_r = int(r0[1])
                         self.start_n = int(r0[0])
