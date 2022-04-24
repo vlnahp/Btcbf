@@ -160,7 +160,7 @@ class Btcbf():
                 else:
                     range0 = input("\n Enter range (example:1-100)>")
                     r0 = range0.split("-")
-                    r0.insert(1,"0")
+                    r0.insert(1,r0[0])
                     open("cache.txt", "w").write("-".join(r0))
                     with ThreadPoolExecutor(max_workers=self.num_of_cores()) as pool:
                         print("\n Starting ...")
@@ -214,8 +214,8 @@ if __name__ =="__main__":
         try:
             t0 = threading.Thread(target=obj.get_user_input)
             t1 = threading.Thread(target=obj.speed)
-            t1.setDaemon(True)
-            t0.setDaemon(True)
+            t1.daemon = True
+            t0.daemon = True
             t0.start()
             t1.start()
             sleep(4000000) # stay in the `try..except`
