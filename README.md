@@ -20,7 +20,7 @@ Btcbf is a fast and efficient bitcoin private key brute force tool written in py
 What makes Btcbf fast, is mainly the `bit` library. Thanks to its developer!
 
 ## The Goal
-The main goal is to prove bitcoin is secure. At least until the day that Quantum computers start working against it!:innocent:
+The main goal is to ~~prove bitcoin is secure. At least until the day that Quantum computers start working against it~~ learn python! 
 
 There are also some useful tools implemented.
 
