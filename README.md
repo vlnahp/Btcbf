@@ -60,4 +60,4 @@ Each donation will be distributed among contributors🤝.
 
 
 ## Latest Release
-Link to latest release(v1.1.0): [link](https://github.com/vlnahp/Btcbf/releases/download/v1.2.1/Btcbf-windows64-v.1.2.0.tar.xz)
+Link to latest release(v1.2.0): [link](https://github.com/vlnahp/Btcbf/releases/download/v1.2.1/Btcbf-windows64-v.1.2.0.tar.xz)
