@@ -1,4 +1,4 @@
-import urllib
+import requests
 from bit import Key
 from time import sleep, time
 import os
@@ -72,20 +72,18 @@ class Btcbf():
     def random_online_brute(self, n):
         self.cur_n = n
         key = Key()
-        req = urllib.request.Request("https://blockchain.info/q/getreceivedbyaddress/"+key.address+"/")
-        with urllib.request.urlopen(req) as url:
-            if int(url.read())>0:
-                print(url.read())
-                print("Wow active address found!!")
-                print(key.address)
-                print(key.to_wif())
-                f = open("foundkey.txt", "a") # the found privatekey and address saved to "foundkey.txt"
-                f.write(key.address+"\n")
-                f.write(key.to_wif()+"\n")
-                f.close()
-                sleep(500)
-                exit()
-            
+        the_page = requests.get("https://blockchain.info/q/getreceivedbyaddress/"+key.address+"/").text
+        if int(the_page)>0:
+            print(the_page)
+            print("Wow active address found!!")
+            print(key.address)
+            print(key.to_wif())
+            f = open("foundkey.txt", "a") # the found privatekey and address saved to "foundkey.txt"
+            f.write(key.address+"\n")
+            f.write(key.to_wif()+"\n")
+            f.close()
+            sleep(500)
+            exit()
             
             
     def num_of_cores(self):
