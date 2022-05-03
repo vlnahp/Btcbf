@@ -1,4 +1,4 @@
-import urllib
+import requests
 from bit import Key
 from time import sleep, time
 import os
@@ -19,8 +19,12 @@ class Btcbf():
         self.seq = False
         self.privateKey = None
         self.start_r = 0
-        self.load_data = open("address.txt", "r").read()
-
+        load_data = open("address.txt", "r").readlines()
+        load_data = [x.rstrip() for x in load_data]
+        # Remove invalid wallet addresses
+        load_data = [x for x in load_data if x.find('wallet') == -1 and len(x) > 0]
+        load_data  = dict(zip(load_data, load_data))
+        self.load_data = load_data
         
     def speed(self):
         while True:
@@ -39,7 +43,7 @@ class Btcbf():
     def random_brute(self, n):
         self.cur_n=n
         key = Key()
-        if  self.load_data.find(key.address) != -1:
+        if key.address in self.load_data.keys():
                 print("Wow matching address found!!")
                 print("Public Adress: "+key.address)
                 print("Private Key: "+key.to_wif())
@@ -53,7 +57,7 @@ class Btcbf():
     def sequential_brute(self, n):
         self.cur_n=n
         key = Key().from_int(n)
-        if self.load_data.find(key.address) != -1:
+        if key.address in self.load_data.keys():
             print("Wow matching address found!!")
             print("Public Adress: "+key.address)
             print("Private Key: "+key.to_wif())
@@ -68,9 +72,9 @@ class Btcbf():
     def random_online_brute(self, n):
         self.cur_n = n
         key = Key()
-        url = urllib.request.urlopen("https://blockchain.info/q/getreceivedbyaddress/"+key.address+"/")
-        if int(url.read())>0:
-            print(url.read())
+        the_page = requests.get("https://blockchain.info/q/getreceivedbyaddress/"+key.address+"/").text
+        if int(the_page)>0:
+            print(the_page)
             print("Wow active address found!!")
             print(key.address)
             print(key.to_wif())
@@ -80,7 +84,6 @@ class Btcbf():
             f.close()
             sleep(500)
             exit()
-            
             
             
     def num_of_cores(self):
