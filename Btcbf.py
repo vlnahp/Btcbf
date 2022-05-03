@@ -43,7 +43,7 @@ class Btcbf():
     def random_brute(self, n):
         self.cur_n=n
         key = Key()
-        if key.address in self.lines_data.keys():
+        if key.address in self.load_data.keys():
                 print("Wow matching address found!!")
                 print("Public Adress: "+key.address)
                 print("Private Key: "+key.to_wif())
@@ -57,7 +57,7 @@ class Btcbf():
     def sequential_brute(self, n):
         self.cur_n=n
         key = Key().from_int(n)
-        if key.address in self.lines_data.keys():
+        if key.address in self.load_data.keys():
             print("Wow matching address found!!")
             print("Public Adress: "+key.address)
             print("Private Key: "+key.to_wif())
