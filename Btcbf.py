@@ -51,7 +51,7 @@ class Btcbf():
                 f.write(key.address+"\n")
                 f.write(key.to_wif()+"\n")
                 f.close()
-                sleep(500)
+                sleep(510)
                 exit()
             
     def sequential_brute(self, n):
