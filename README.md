@@ -48,17 +48,6 @@ Results will be saved to `foundkey.txt` in the main directory.
 Permissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.
 
 
-## **Donation**
-
-Make my BTC address a good option to be on the list!:cowboy_hat_face:
-
-Each donation will be distributed among contributors🤝.
-
->BTC: 13r5Xr3D1j1RgwVt6KToXn8h9vqYb49eNx
-
->ETH: 0x25A296248f9F4a5e2343Dd19faF1b49594746620
-
->BCH: qq0ns64247xhqxjzv8cnjw7hl4scuc0jryzu37p4s9
 
 
 ## Latest Release
