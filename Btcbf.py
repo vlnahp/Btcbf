@@ -19,12 +19,11 @@ class Btcbf():
         self.seq = False
         self.privateKey = None
         self.start_r = 0
-        load_data = open("address.txt", "r").readlines()
-        load_data = [x.rstrip() for x in load_data]
+        loaded_addresses = open("address.txt", "r").readlines()
+        loaded_addresses = [x.rstrip() for x in loaded_addresses]
         # Remove invalid wallet addresses
-        load_data = [x for x in load_data if x.find('wallet') == -1 and len(x) > 0]
-        load_data  = dict(zip(load_data, load_data))
-        self.load_data = load_data
+        loaded_addresses = [x for x in loaded_addresses if x.find('wallet') == -1 and len(x) > 0]
+        self.loaded_addresses = set(loaded_addresses)
         
     def speed(self):
         while True:
@@ -43,7 +42,7 @@ class Btcbf():
     def random_brute(self, n):
         self.cur_n=n
         key = Key()
-        if key.address in self.load_data.keys():
+        if key.address in self.loaded_addresses:
                 print("Wow matching address found!!")
                 print("Public Adress: "+key.address)
                 print("Private Key: "+key.to_wif())
@@ -57,7 +56,7 @@ class Btcbf():
     def sequential_brute(self, n):
         self.cur_n=n
         key = Key().from_int(n)
-        if key.address in self.load_data.keys():
+        if key.address in self.loaded_addresses:
             print("Wow matching address found!!")
             print("Public Adress: "+key.address)
             print("Private Key: "+key.to_wif())
