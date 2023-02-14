@@ -233,7 +233,7 @@ class brute_manager():
     def run(self):
         try:
             self.ProcessList = list()
-            self.shared_ =  Multi_processing.Manager().list()
+            self.shared_ = Multi_processing.Manager().list()
             self.shared_.append(True)
             self.start_worker(workers=10,use_proxy=True)
         except BaseException as ex:
