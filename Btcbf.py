@@ -170,8 +170,7 @@ class Btcbf():
         elif user_input == "4":
             method_input = input(" \n Enter the desired number: \n \n   [1]: random attack \n   [2]: sequential attack \n   [0]: exit \n \n Type something>")
             if method_input=="1":
-                self.random_online_brute()
-                return
+                target =self.random_online_brute()
             elif method_input=="2":
                 print("sequential online attack will be available soon!")
                 input("Press Enter to exit")
