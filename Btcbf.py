@@ -70,8 +70,8 @@ class Btcbf():
             exit()
     
     
-    def random_online_brute(self, n):
-        brute_manager().run()
+    def random_online_brute(self):
+        random_brute.brute_manager().run()
             
             
     def num_of_cores(self):
@@ -170,7 +170,8 @@ class Btcbf():
         elif user_input == "4":
             method_input = input(" \n Enter the desired number: \n \n   [1]: random attack \n   [2]: sequential attack \n   [0]: exit \n \n Type something>")
             if method_input=="1":
-                target = self.random_online_brute
+                self.random_online_brute()
+                return
             elif method_input=="2":
                 print("sequential online attack will be available soon!")
                 input("Press Enter to exit")
@@ -189,7 +190,7 @@ class Btcbf():
             input("Press Enter to exit")
             exit()
         with ThreadPoolExecutor(max_workers=self.num_of_cores()) as pool:
-            r = range(100000000000000000)
+            r = range(2)
             print("\n Starting ...")
             self.start_t = time()
             self.start_n = 0
