@@ -235,7 +235,7 @@ class brute_manager():
             self.ProcessList = list()
             self.shared_ =  Multi_processing.Manager().list()
             self.shared_.append(True)
-            self.start_worker(workers=50,use_proxy=True)
+            self.start_worker(workers=1,use_proxy=True)
         except BaseException as ex:
             self.stop_worker()
 
