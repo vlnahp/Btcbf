@@ -185,7 +185,7 @@ class Brute():
                     raise ex
 
 
-class Run():
+class Random_brute():
     def __init__(self):
         self.ProcessList : list
         self.shared_ : Multi_processing.Manager().list
@@ -239,11 +239,4 @@ class Run():
         except BaseException as ex:
             self.stop_worker()
 
-if __name__ == "__main__":
-    StaticMethods.prnt_scr("Welcome")
-    try:
-        d: Run = Run()
-        d.run()
-        StaticMethods.prnt_scr("see you")
-    except BaseException as e:
-        sys.exit()
+
