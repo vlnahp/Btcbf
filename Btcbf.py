@@ -5,6 +5,7 @@ import os
 import threading
 from concurrent.futures import ThreadPoolExecutor
 from multiprocessing import cpu_count
+import random_brute
 
 if os.path.exists(os.getcwd()+"/cache.txt") == False:
     open("cache.txt", "w+")
@@ -70,20 +71,7 @@ class Btcbf():
     
     
     def random_online_brute(self, n):
-        self.cur_n = n
-        key = Key()
-        the_page = requests.get("https://blockchain.info/q/getreceivedbyaddress/"+key.address+"/").text
-        if int(the_page)>0:
-            print(the_page)
-            print("Wow active address found!!")
-            print(key.address)
-            print(key.to_wif())
-            f = open("foundkey.txt", "a") # the found privatekey and address saved to "foundkey.txt"
-            f.write(key.address+"\n")
-            f.write(key.to_wif()+"\n")
-            f.close()
-            sleep(500)
-            exit()
+        brute_manager().run()
             
             
     def num_of_cores(self):
