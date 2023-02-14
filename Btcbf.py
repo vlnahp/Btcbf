@@ -190,7 +190,7 @@ class Btcbf():
             input("Press Enter to exit")
             exit()
         with ThreadPoolExecutor(max_workers=self.num_of_cores()) as pool:
-            r = range(2)
+            r = range(100000000000000000)
             print("\n Starting ...")
             self.start_t = time()
             self.start_n = 0
