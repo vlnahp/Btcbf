@@ -185,7 +185,7 @@ class Brute():
                     raise ex
 
 
-class Random_brute():
+class brute_manager():
     def __init__(self):
         self.ProcessList : list
         self.shared_ : Multi_processing.Manager().list
