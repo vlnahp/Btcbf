@@ -325,19 +325,5 @@ class AddressFact():
         return globals()[targetclass]()
 
 
-if __name__ == "__main__":
-        aa = list()
-        bb = AddressFact()
-        cc = ["Lib1", "Lib2", "Lib3", "Lib4","Lib5"]
-        for dd in cc:
-            try:
-                ee = bb.createAdress(dd).getAdrs()
-            except BaseException:
-                continue
-            for item in ee:
-                aa.append(item)
-        for item in aa:
-            print(item)
-            
-   
+
     
