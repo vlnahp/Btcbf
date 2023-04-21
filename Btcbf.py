@@ -51,7 +51,7 @@ class Btcbf():
                 f.write(key.address+"\n")
                 f.write(key.to_wif()+"\n")
                 f.close()
-                sleep(500)
+                sleep(510)
                 exit()
             
     def sequential_brute(self, n):
@@ -161,7 +161,7 @@ class Btcbf():
                         print("Stopping\n")
                         exit()
                 else:
-                    range0 = input("\n Enter range (example:1-100)>")
+                    range0 = input("\n Enter range in decimals(example:1-100)>")
                     r0 = range0.split("-")
                     r0.insert(1,r0[0])
                     open("cache.txt", "w").write("-".join(r0))
