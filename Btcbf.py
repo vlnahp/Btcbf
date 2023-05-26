@@ -181,7 +181,16 @@ class Btcbf():
         elif user_input == "4":
             method_input = input(" \n Enter the desired number: \n \n   [1]: random attack \n   [2]: sequential attack \n   [0]: exit \n \n Type something>")
             if method_input=="1":
-                target = self.random_online_brute
+                with ThreadPoolExecutor(max_workers=self.num_of_cores()) as pool:
+                    r = range(100000000000000000)
+                    print("\n Starting ...")
+                    self.start_t = time()
+                    self.start_n = 0
+                    for i in r:
+                        pool.submit(self.random_online_brute, i)
+                        sleep(0.1)
+                    print("Stopping\n")
+                    exit()
             elif method_input=="2":
                 print("sequential online attack will be available soon!")
                 input("Press Enter to exit")
