@@ -1,4 +1,4 @@
-# **KeyZero: Bitcoin Private Key Brute Force Tool** [![CodeFactor](https://www.codefactor.io/repository/github/vlnahp/KeyZero/badge/main)](https://www.codefactor.io/repository/github/vlnahp/KeyZero/overview/main)
+# **KeyZero (previously Btcbf)** [![CodeFactor](https://www.codefactor.io/repository/github/vlnahp/KeyZero/badge/main)](https://www.codefactor.io/repository/github/vlnahp/KeyZero/overview/main)
 
 KeyZero is a Python-based tool designed for brute-forcing Bitcoin private keys. It generates random or sequential private keys, computes their corresponding public addresses, and checks them against an online API or an offline database to determine if they hold any Bitcoin balance. The name "KeyZero" humorously reflects the near-zero chance of finding a valid key, making it a fun and educational tool for exploring Bitcoin's security.
 
